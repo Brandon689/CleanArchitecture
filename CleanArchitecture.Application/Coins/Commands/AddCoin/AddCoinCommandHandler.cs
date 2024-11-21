@@ -21,10 +21,22 @@ public class AddCoinCommandHandler : IRequestHandler<AddCoinCommand, ErrorOr<Coi
 
     public async Task<ErrorOr<Coin>> Handle(AddCoinCommand command, CancellationToken cancellationToken)
     {
-        //var coin = new Coin(
-        //    name: command.Name,
-        //    symbol: command.Symbol);
-        var coin = new Coin();
+        var coin = new Coin(
+            name: command.Name,
+            symbol: command.Symbol,
+            coinImageURL: command.CoinImageURL,
+            currentPrice: command.CurrentPrice,
+            marketCap: command.MarketCap,
+            marketCapRank: command.MarketCapRank,
+            fullyDilutedValuation: command.FullyDilutedValuation,
+            totalVolume: command.TotalVolume,
+            circulatingSupply: command.CirculatingSupply,
+            totalSupply: command.TotalSupply,
+            ath: command.Ath,
+            athDate: command.AthDate,
+            atl: command.Atl,
+            atlDate: command.AtlDate
+            );
 
         await _gymsRepository.AddCoinAsync(coin);
         await _unitOfWork.CommitChangesAsync();

@@ -1,4 +1,7 @@
-﻿namespace CleanArchitecture.API;
+﻿using CleanArchitecture.Infrastructure.Database;
+using Microsoft.AspNetCore.Identity;
+
+namespace CleanArchitecture.API;
 
 public static class DependencyInjection
 {
@@ -20,7 +23,8 @@ public static class DependencyInjection
             });
         });
 
-        //services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+        services.AddIdentityApiEndpoints<IdentityUser>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
         return services;
     }

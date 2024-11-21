@@ -1,21 +1,21 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿//using Microsoft.AspNetCore.Identity;
 
-namespace CleanArchitecture.API.Extensions;
+//namespace CleanArchitecture.API.Extensions;
 
-public static class ApplicationBuilderExtensions
-{
-    public static WebApplication ConfigureMiddleware(this WebApplication app)
-    {
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+//public static class ApplicationBuilderExtensions
+//{
+//    public static WebApplication ConfigureMiddleware(this WebApplication app)
+//    {
+//        if (app.Environment.IsDevelopment())
+//        {
+//            app.UseSwagger();
+//            app.UseSwaggerUI();
+//        }
 
-        app.MapIdentityApi<IdentityUser>();
-        app.UseHttpsRedirection();
-        app.UseCors("AllowFrontend");
+//        app.MapIdentityApi<IdentityUser>();
+//        app.UseHttpsRedirection();
+//        app.UseCors("AllowFrontend");
 
-        return app;
-    }
-}
+//        return app;
+//    }
+//}

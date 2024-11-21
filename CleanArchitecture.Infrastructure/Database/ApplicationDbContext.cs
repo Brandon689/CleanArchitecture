@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Domain.Coins;
+﻿using CleanArchitecture.Application.Common;
+using CleanArchitecture.Domain.Coins;
 using CleanArchitecture.Domain.Portfolios;
 using CleanArchitecture.Domain.Positions;
 using CleanArchitecture.Infrastructure.Identity;
@@ -8,15 +9,16 @@ using System.Reflection;
 
 namespace CleanArchitecture.Infrastructure.Database;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IUnitOfWork
 {
+    public DbSet<Coin> Coins { get; set; } = null!;
+    public DbSet<Portfolio> Portfolios { get; set; } = null!;
+    public DbSet<Position> Positions { get; set; } = null!;
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
+    : base(options)
     {
     }
-    public DbSet<Coin> Coins { get; set; }
-    public DbSet<Portfolio> Portfolios { get; set; }
-    public DbSet<Position> Positions { get; set; }
 
     public async Task CommitChangesAsync()
     {

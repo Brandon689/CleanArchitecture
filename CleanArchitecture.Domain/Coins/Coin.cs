@@ -7,7 +7,7 @@ public class Coin
         string coinImageURL,
         decimal currentPrice,
         decimal marketCap,
-        decimal marketCapRank,
+        int marketCapRank,
         decimal fullyDilutedValuation,
         decimal totalVolume,
         decimal circulatingSupply,
@@ -34,10 +34,7 @@ public class Coin
         Atl = atl;
         AtlDate = atlDate;
     }
-    public Coin()
-    {
 
-    }
     public Guid Id { get; }
 
     public string Name { get; init; }
@@ -46,7 +43,7 @@ public class Coin
 
     public decimal CurrentPrice { get; init; }
     public decimal MarketCap { get; init; }
-    public decimal MarketCapRank { get; init; }
+    public int MarketCapRank { get; init; }
     public decimal FullyDilutedValuation { get; init; }
     public decimal TotalVolume { get; init; }
     public decimal CirculatingSupply { get; init; }
@@ -58,6 +55,5 @@ public class Coin
 
 
 
-    //private Coin() { }
-
+    private Coin() { }
 }
