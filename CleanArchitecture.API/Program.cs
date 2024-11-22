@@ -3,7 +3,6 @@ using CleanArchitecture.API.Endpoints.Coins;
 using CleanArchitecture.API.Extensions;
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,22 +13,25 @@ builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 
+const string CORS_POLICY = "CorsPolicy";
+
+var baseUrlConfig = builder.Configuration.GetSection("BaseUrls").Get<BaseUrlConfiguration>();
+builder.Services.AddCorsPolicy(CORS_POLICY, baseUrlConfig);
+
+
 var app = builder.Build();
 
-//if (app.Environment.IsDevelopment())
-//{
-//    app.MapOpenApi();
+app.UseCors(CORS_POLICY);
 
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//app.MapIdentityApi<IdentityUser>();
-//app.UseHttpsRedirection();
-//app.UseCors("AllowFrontend");
 
 app.ConfigureMiddleware();
 
 app.MapCoinEndpoints();
 
 app.Run();
+
+
+public class BaseUrlConfiguration
+{
+    public string WebBase { get; set; }
+}

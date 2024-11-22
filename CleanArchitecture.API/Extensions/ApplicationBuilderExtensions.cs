@@ -16,7 +16,6 @@ public static class ApplicationBuilderExtensions
 
         app.MapIdentityApi<IdentityUser>();
         app.UseHttpsRedirection();
-        app.UseCors("AllowFrontend");
 
         return app;
     }
