@@ -16,22 +16,22 @@ builder.Services
 const string CORS_POLICY = "CorsPolicy";
 
 var baseUrlConfig = builder.Configuration.GetSection("BaseUrls").Get<BaseUrlConfiguration>();
-builder.Services.AddCorsPolicy(CORS_POLICY, baseUrlConfig);
 
+if (baseUrlConfig != null)
+{
+    builder.Services.AddCorsPolicy(CORS_POLICY, baseUrlConfig);
+}
 
 var app = builder.Build();
 
-app.UseCors(CORS_POLICY);
-
+if (baseUrlConfig != null)
+{
+    app.UseCors(CORS_POLICY);
+}
 
 app.ConfigureMiddleware();
-
 app.MapCoinEndpoints();
 
 app.Run();
 
-
-public class BaseUrlConfiguration
-{
-    public string WebBase { get; set; }
-}
+public partial class Program { }

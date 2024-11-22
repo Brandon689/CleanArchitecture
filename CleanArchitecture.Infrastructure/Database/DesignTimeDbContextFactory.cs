@@ -7,7 +7,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
 {
     public ApplicationDbContext CreateDbContext(string[] args)
     {
-        var connectionString = "Host=localhost;Port=55432;Database=smartcms;Username=postgres;Password=postgres;Include Error Detail=true";
+        const string connectionString = "Host=localhost;Port=55432;Database=CleanArchitecture;UserName=postgres;Password=postgres;Include Error Detail=true";
 
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
         optionsBuilder.UseNpgsql(connectionString);

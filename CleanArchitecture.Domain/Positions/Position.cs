@@ -2,7 +2,7 @@
 
 public sealed class Position
 {
-    public Guid Guid { get; }
+    public Guid Id { get; }
 
     public Guid PortfolioId { get; private set; }
     public Guid CoinId { get; private set; }
