@@ -67,15 +67,15 @@ public class CoinsRepository : ICoinsRepository
         return exists > 0;
     }
 
-    public async Task AddCoinAsync(Coin coin)
+    public Task AddCoinAsync(Coin coin)
     {
-        await _dbContext.Coins.AddAsync(coin);
-        await _dbContext.CommitChangesAsync();
+        _dbContext.Coins.Add(coin);
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateCoinAsync(Coin coin)
+    public Task UpdateCoinAsync(Coin coin)
     {
         _dbContext.Coins.Update(coin);
-        await _dbContext.CommitChangesAsync();
+        return Task.CompletedTask;
     }
 }
